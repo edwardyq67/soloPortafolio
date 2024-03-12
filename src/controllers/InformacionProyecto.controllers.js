@@ -1,8 +1,10 @@
 const catchError = require('../utils/catchError');
 const InformacionProyecto = require('../models/InformacionProyecto');
 const Lenguaje = require('../models/Lenguaje');
+const IMGPProyectosFrontEnd = require('../models/imgProyectosFrontEnd');
+const IMGProyectoBackEnd = require('../models/imgProyectoBackEnd');
 const getAll = catchError(async(req, res) => {
-    const results = await InformacionProyecto.findAll({include:[Lenguaje]});
+    const results = await InformacionProyecto.findAll({include:[Lenguaje,IMGPProyectosFrontEnd,IMGProyectoBackEnd]});
     return res.json(results);
 });
 
@@ -40,20 +42,7 @@ const setLenguaje=catchError(async(req,res)=>{
     const lenguaje=await informaionProyecto.getLenguajes(InformacionProyecto);
     return res.json(lenguaje);
 })
-const setFrontEnd=catchError(async(req,res)=>{
-    const {id}=req.params;
-    const informaionProyecto=await InformacionProyecto.findByPk(id);
-    await informaionProyecto.setIMGPProyectosFrontEnds(req.body);
-    const frontEnd=await informaionProyecto.getIMGPProyectosFrontEnds(InformacionProyecto);
-    return res.json(frontEnd);
-})
-const setBackEnd=catchError(async(req,res)=>{
-    const {id}=req.params;
-    const informaionProyecto=await InformacionProyecto.findByPk(id);
-    await informaionProyecto.setIMGProyectoBackEnds(req.body);
-    const backEnd=await informaionProyecto.getIMGProyectoBackEnds(InformacionProyecto);
-    return res.json(backEnd);
-})
+
 module.exports = {
     getAll,
     create,
@@ -61,6 +50,5 @@ module.exports = {
     remove,
     update,
     setLenguaje,
-    setFrontEnd,
-    setBackEnd
+    
 }

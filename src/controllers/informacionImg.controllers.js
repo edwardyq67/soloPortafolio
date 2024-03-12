@@ -20,6 +20,7 @@ const remove = catchError(async(req, res) => {
     await image.destroy();
     return res.sendStatus(204);
 });
+
 module.exports = {
     getAll,
     create,

@@ -1,4 +1,4 @@
-const { getAll, create, getOne, remove, update,setLenguaje,setFrontEnd,setBackEnd } = require('../controllers/InformacionProyecto.controllers');
+const { getAll, create, getOne, remove, update,setLenguaje } = require('../controllers/InformacionProyecto.controllers');
 const express = require('express');
 
 const routeInformacionProyeco = express.Router();
@@ -15,8 +15,4 @@ routeInformacionProyeco.route('/:id')
 routeInformacionProyeco.route('/:id/lenguaje')
     .post(setLenguaje)
 
-routeInformacionProyeco.route('/:id/frontEnd')
-    .post(setFrontEnd)
-routeInformacionProyeco.route('/:id/backEnd')
-    .post(setBackEnd)
 module.exports = routeInformacionProyeco;
