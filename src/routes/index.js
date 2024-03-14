@@ -8,7 +8,7 @@ const routeLenguaje = require('./lenguaje.routes');
 const routeInformacion = require('./informacion.route');
 const routerinformacionImg = require('./informacionImg.module');
 
-const routerEmail = require('./emails.routes');
+
 const router = express.Router();
 
 // colocar las rutas aquí
@@ -20,5 +20,5 @@ router.use("/imgProyectoFrontEnd",routeImgProyectoFrontEnd)
 router.use("/lenguaje",routeLenguaje)
 router.use("/imgProyectoBackEnd",routeImgProyectoBackEnd)
 
-router.use('/email',routerEmail)
+
 module.exports = router;
